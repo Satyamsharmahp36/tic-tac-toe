@@ -30,18 +30,26 @@ var click=0
 
 function handleClick(e){
     console.log(e.target.getAttribute('Id'))
+    //to get the id of our clicked function which is at top 
     let i=e.target.getAttribute('Id')
     console.log(i-1)
+    
     let p=document.createElement('p')
     let box=boxelement[i-1]
+    //this -1 because index are less than our given id's
     box.append(p)
     p.setAttribute('id','text')
     p.style.color="black"
+    //there we are inserting the p tag with some specifications 
 
     if(click%2==0){
         xattempts.push(i-1)
         p.innerText='X'
         result(winningcombinations,xattempts,'x')
+
+        //as we have already make a click function and also wwe are inrementing so when ever its vale is 0,,2,4 
+        //means which are divisible by 2 then x will work other than thqt o will work
+    
         
     }
     else{
@@ -50,6 +58,7 @@ function handleClick(e){
         result(winningcombinations,oattempts,'o')
     }
     click++
+//condition for tie as max clicks will be 9 only
 if(click==9 && wonTheGame ==0){
     gameResult.style.visibility="visible"
     message.innerHTML="Its's a tie"
@@ -81,12 +90,12 @@ for(let i=0;i<winningcombinations.length;i++){
     }
 
 }
-if(check.every(check=>check===true)&&flag>2){
+if(check.every(el=>el===true)&&flag>2){
     gameResult.style.visibility="visible";
     message.innerHTML="'"+ playername + "'" + " Won the game!";
     wonTheGame=1;
 }
-}
+} 
 
 
 
@@ -96,7 +105,14 @@ again.addEventListener("click",()=>{
     location.href="./index.html"
 
 })
+//there we are just making our button function .
 
+
+// let arr=[true,true,false]
+
+// arr.every((check)=>{
+//     return check==true
+// })
 
 
 
